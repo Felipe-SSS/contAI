@@ -18,6 +18,7 @@ ContAI é uma aplicação fullstack para registro e acompanhamento de lançament
 ## Execução
 
 1. Instale os arquivos de frontend e backend
-2. Instale o schema do banco de dados em SQL e aplique no seu sistema
-3. Configure a conexão PostgreSQL no backend
-4. Rode o backend e frontend separadamente com `npm run dev` no cmd e acesse a página de forma local com o endereço do Vite
+2. Instale o schema do banco de dados em SQL e aplique no pgAdmin ou outro provedor
+3. Configure a conexão PostgreSQL no backend, mudando os parâmetros do arquivo `.env` localizado no diretório `backend`
+4. Abra ambos os diretórios `frontend` e `backend` no cmd e execute o comando `npm run dev`
+5. Acesse no navegador o endereço local que o Vise fornece (cmd do frontend).
