@@ -1,0 +1,102 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 17.5
+-- Dumped by pg_dump version 17.5
+
+-- Started on 2025-06-09 17:48:05
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET transaction_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- TOC entry 847 (class 1247 OID 16399)
+-- Name: transaction_type_enum; Type: TYPE; Schema: public; Owner: postgres
+--
+
+CREATE TYPE public.transaction_type_enum AS ENUM (
+    'credit',
+    'debit'
+);
+
+
+ALTER TYPE public.transaction_type_enum OWNER TO postgres;
+
+SET default_tablespace = '';
+
+SET default_table_access_method = heap;
+
+--
+-- TOC entry 218 (class 1259 OID 16404)
+-- Name: transaction; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.transaction (
+    id integer NOT NULL,
+    description character varying NOT NULL,
+    value numeric(10,2) NOT NULL,
+    type public.transaction_type_enum NOT NULL,
+    date date NOT NULL
+);
+
+
+ALTER TABLE public.transaction OWNER TO postgres;
+
+--
+-- TOC entry 217 (class 1259 OID 16403)
+-- Name: transaction_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.transaction_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER SEQUENCE public.transaction_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 4797 (class 0 OID 0)
+-- Dependencies: 217
+-- Name: transaction_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.transaction_id_seq OWNED BY public.transaction.id;
+
+
+--
+-- TOC entry 4644 (class 2604 OID 16407)
+-- Name: transaction id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.transaction ALTER COLUMN id SET DEFAULT nextval('public.transaction_id_seq'::regclass);
+
+
+--
+-- TOC entry 4646 (class 2606 OID 16411)
+-- Name: transaction PK_89eadb93a89810556e1cbcd6ab9; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.transaction
+    ADD CONSTRAINT "PK_89eadb93a89810556e1cbcd6ab9" PRIMARY KEY (id);
+
+
+-- Completed on 2025-06-09 17:48:05
+
+--
+-- PostgreSQL database dump complete
+--
+
