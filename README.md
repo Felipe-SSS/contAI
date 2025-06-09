@@ -17,7 +17,7 @@ ContAI é uma aplicação fullstack para registro e acompanhamento de lançament
 
 ## Execução
 
-1. Instale as dependências com `npm install` em `client/` e `server/`
+1. Instale os arquivos de frontend e backend
 2. Instale o schema do banco de dados em SQL e aplique no seu sistema
 3. Configure a conexão PostgreSQL no backend
 4. Rode o backend e frontend separadamente com `npm run dev` no cmd e acesse a página de forma local com o endereço do Vite
